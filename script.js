@@ -253,7 +253,7 @@
     return new Promise(res=>c.toBlob(res,"image/png",.95));
   }
   async function openShareCard(){
-    // The share card is a replacement for Game Over, never a second modal behind it.
+    // The share card is a replacement for adityasingh Game Over, never a second modal behind it.
     $("#gameOverOverlay").classList.add("hidden");
     const modal=$("#shareCardOverlay"),img=$("#sharePreview");
     const blob=await makeShareBlob();if(!blob){setGameMessage("Could not create score card.");return;}
@@ -262,7 +262,7 @@
   function closeShareCard(){const modal=$("#shareCardOverlay"),img=$("#sharePreview");if(modal.dataset.blobUrl)URL.revokeObjectURL(modal.dataset.blobUrl);modal.dataset.blobUrl="";img.removeAttribute("src");modal.classList.add("hidden");}
   async function shareImage(){
     const blob=await makeShareBlob();if(!blob){setGameMessage("Could not create score image.");return;}const file=new File([blob],"flower-hunt-score.png",{type:"image/png"});
-    const shareText=`🌻 I scored ${state.score} points in Flower Hunt! 🔥 Can you beat my score?`;
+    const shareText=`<a href="https://drive.google.com/file/d/19TP7Qkjw11evq2X1h-BL4OBPDDsbxuif/view?usp=drivesdk"><b>Download, Play and Beat My Score</b></a>`;
     if(navigator.share){
       try{
         if(navigator.canShare?.({files:[file]})){await navigator.share({title:"Flower Hunt Score",text:shareText,files:[file]});return;}
