@@ -262,7 +262,7 @@
   function closeShareCard(){const modal=$("#shareCardOverlay"),img=$("#sharePreview");if(modal.dataset.blobUrl)URL.revokeObjectURL(modal.dataset.blobUrl);modal.dataset.blobUrl="";img.removeAttribute("src");modal.classList.add("hidden");}
   async function shareImage(){
     const blob=await makeShareBlob();if(!blob){setGameMessage("Could not create score image.");return;}const file=new File([blob],"flower-hunt-score.png",{type:"image/png"});
-    const shareText=`<a href="https://drive.google.com/file/d/19TP7Qkjw11evq2X1h-BL4OBPDDsbxuif/view?usp=drivesdk"><b>Download, Play and Beat My Score</b></a>`;
+    const shareText=`_*https://drive.google.com/file/d/19TP7Qkjw11evq2X1h-BL4OBPDDsbxuif/view?usp=drivesdk*_ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ*Download,Play* *and Beat My Score*`;
     if(navigator.share){
       try{
         if(navigator.canShare?.({files:[file]})){await navigator.share({title:"Flower Hunt Score",text:shareText,files:[file]});return;}
